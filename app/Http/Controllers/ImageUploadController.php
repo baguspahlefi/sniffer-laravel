@@ -15,7 +15,6 @@ class ImageUploadController extends Controller
 
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
-                dd($uploadedFiles);
                 // Generate unique filename
                 $filename = time() . '_' . $image->getClientOriginalName();
                 
@@ -24,7 +23,7 @@ class ImageUploadController extends Controller
                 
                 // Create database record
                 $galleryImage = GalleryImage::create([
-                    'filename' => $filename,
+                    'filename' => 'filename',
                     'file_path' => $path,
                     'original_name' => $image->getClientOriginalName(),
                     'mime_type' => $image->getMimeType(),
