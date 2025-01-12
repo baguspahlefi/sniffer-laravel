@@ -14,3 +14,5 @@ Route::post('/customers', [PostController::class, 'store']);
 
 Route::post('/upload', [ImageUploadController::class, 'store']);
 
+Route::get('/get', [ImageUploadController::class, 'index']);
+
