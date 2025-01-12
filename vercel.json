@@ -5,11 +5,13 @@
         "api/index.php": { "runtime": "vercel-php@0.7.1" }
     },
     "routes": [
-        { "src": "/build/(.*)", "dest": "/public/build/" },
+        { "src": "/build/(.*)", "dest": "/public/build/$1" },
+        { "src": "/(css|js|images|fonts|assets|favicon.ico)/(.*)", "dest": "/public/$1/$2" },
+        { "src": "/storage/(.*)", "dest": "/public/storage/$1" },
         { "src": "/(.*)", "dest": "/api/index.php" }
     ],
     "public": true,
-    "buildCommand": "vite build",
+    "buildCommand": "npm install && npm run build",
     "outputDirectory": "public",
     "env": {
         "APP_ENV": "production",
@@ -25,11 +27,13 @@
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie",
+        "SESSION_LIFETIME": "120",
         "DB_CONNECTION": "mysql",
         "DB_HOST": "jwnze.h.filess.io",
         "DB_PORT": "3307",
         "DB_DATABASE": "projectlaravel_accurateat",
         "DB_USERNAME": "projectlaravel_accurateat",
-        "DB_PASSWORD": "e7a83105ee0bc708e86a9fa8685367da3da33bf7"
+        "DB_PASSWORD": "e7a83105ee0bc708e86a9fa8685367da3da33bf7",
+        "ASSET_URL": "/"
     }
 }
